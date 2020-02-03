@@ -56,7 +56,7 @@ int deplacement(int pos,lieux liste[],int stamina){
     printf("Choisisez votre lieux:\n"); 
     scanf("%s",&choix);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 5; i++)
     {
         if(strcmp(choix,liste[i].nom)==0){
             posD = i;

@@ -1,1 +1,5 @@
 Route_A Petite_route_de_campagne 1 0 0 1 2
+Route_B Petite_route_de_campagne 1 1 0 1 2
+Route_C Petite_route_de_campagne 1 2 1 2 3
+VilleA Petit_village 3 3 1 2 4
+Route_D Route_escarper 10 4 2 3 4
