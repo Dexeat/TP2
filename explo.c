@@ -21,11 +21,11 @@ lieux createL(lieux * liste){
    while(1) {
     fscanf(fp,"%s",liste[i].nom);
     fscanf(fp,"%s",liste[i].desc);
-    fscanf(fp,"%d",liste[i].diff);
-    fscanf(fp,"%d",liste[i].num);
+    fscanf(fp,"%d",&liste[i].diff);
+    fscanf(fp,"%d",&liste[i].num);
     for (int y = 0; y < 3; y++)
     {
-        fscanf(fp,"%d",liste[i].link[y]);
+        fscanf(fp,"%d",&liste[i].link[y]);
     }
     i++;
 
