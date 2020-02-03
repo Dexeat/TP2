@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 struct Lieux
 {
@@ -11,19 +12,30 @@ struct Lieux
 typedef struct Lieux lieux;
 
 int deplacement(int pos,lieux liste[]){
-    int choix;
+    int posD;
+    char choix[50];
     printf("Choisisez votre lieux:\n");
-    scanf("%d",&choix);
-    printf("Vous vous deplacez de %s a %s\n\n",liste[pos].nom,liste[choix].nom);
+    scanf("%s",&choix);
 
-    return(choix);
+    for (int i = 0; i < 3; i++)
+    {
+        if(strcmp(choix,liste[i].nom)==0){
+            posD = i;
+            break;
+        }
+    }
+    
+
+    printf("Vous vous deplacez de %s a %s\n\n",liste[pos].nom,liste[posD].nom);
+
+    return(posD);
 }
 
 
 
 int main(){
     
-    lieux Route_de_depart = {"Route de depart","Le lieux ou vous debutez",0,{1,2}};
+    lieux Route_de_depart = {"Route_de_depart","Le lieux ou vous debutez",0,{1,2}};
     lieux VillageA = {"VillageA","Premier village que vous croisez!",1,{0,2,3}};
     lieux VillageB = {"VillageB","Un peu plus grand que le VillageA",1,{0,1,3}};
 
