@@ -12,6 +12,28 @@ struct Lieux
 
 typedef struct Lieux lieux;
 
+lieux createL(lieux * liste){
+
+    FILE * fp;
+    int c,i;
+    i = 0;
+   fp = fopen("text.txt","r");
+   while(1) {
+    fscanf(fp,"%s",liste[i].nom);
+    fscanf(fp,"%s",liste[i].desc);
+    fscanf(fp,"%d",liste[i].diff);
+    fscanf(fp,"%d",liste[i].num);
+    for (int y = 0; y < 3; y++)
+    {
+        fscanf(fp,"%d",liste[i].link[y]);
+    }
+    i++;
+
+    if(feof(fp)){break;}
+    }
+fclose(fp);
+}
+
 
 int deplacement(int pos,lieux liste[],int stamina){
     int posD;
@@ -57,12 +79,14 @@ int main(){
     lieux VillageA = {"VillageA","Premier village que vous croisez!",2,1,{0,1,2}};
     lieux VillageB = {"VillageB","Un peu plus grand que le VillageA",10,2,{0,1,2}};
 
-    lieux liste_lieux[3] = {Route_de_depart,VillageA,VillageB};
+    lieux liste_lieux[50] = {Route_de_depart,VillageA,VillageB};
 
     char avant[50] = {"\nIl y a un avant-poste ici\n"};
     int pos = 0;
     int stamina = 100;
     int debutL,finL,choixS,choixA;
+
+    createL(liste_lieux);
 
     while (1)
     {
