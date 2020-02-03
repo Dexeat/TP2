@@ -4,7 +4,7 @@
 struct Lieux
 {
     char nom[50];
-    char desc[50];
+    char desc[100];
     int diff;
     int num;
     int link[3];
@@ -43,7 +43,8 @@ int deplacement(int pos,lieux liste[],int stamina){
     }
     
 
-    printf("Vous vous deplacez de %s a %s\n\n",liste[pos].nom,liste[posD].nom);
+    printf("Vous vous deplacez de %s a %s\n",liste[pos].nom,liste[posD].nom);
+    printf("%s\n\n",liste[posD].desc);
 
     return(posD);
 }
@@ -54,14 +55,14 @@ int main(){
     
     lieux Route_de_depart = {"Route_de_depart","Le lieux ou vous debutez",0,0,{0,1,2}};
     lieux VillageA = {"VillageA","Premier village que vous croisez!",2,1,{0,1,2}};
-    lieux VillageB = {"VillageB","Un peu plus grand que le VillageA",3,2,{0,1,2}};
+    lieux VillageB = {"VillageB","Un peu plus grand que le VillageA",10,2,{0,1,2}};
 
     lieux liste_lieux[3] = {Route_de_depart,VillageA,VillageB};
 
-    
+    char avant[50] = {"\nIl y a un avant-poste ici\n"};
     int pos = 0;
     int stamina = 100;
-    int debutL,finL,choixS;
+    int debutL,finL,choixS,choixA;
 
     while (1)
     {
@@ -71,7 +72,7 @@ int main(){
         if (liste_lieux[pos].diff<5)
         {
             printf("Vous pouvez vous reposez et restaurez 50 de stamina\n");
-            scanf("%s",&choixS);
+            scanf("%d",&choixS);
             printf("\n\n");
             if (choixS == 1)
             {
@@ -85,6 +86,20 @@ int main(){
             }
             
         }
+        if (liste_lieux[pos].diff>=10)
+        {
+            printf("Vous pouvez cree un avant-poste\n");
+            scanf("%d",&choixA);
+            printf("\n\n");
+            if (choixA == 1)
+            {
+                liste_lieux[pos].diff = liste_lieux[pos].diff /2;
+                strcat(liste_lieux[pos].desc, avant);
+                printf("Vous avez cree un avant-post\n");
+            }
+            
+        }
+        
         
     }
     
